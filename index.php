@@ -5,11 +5,9 @@ array_push($books,'http://fs.to/get/dl/5s6pwdpwi9vb8fwi7z5dhjmae.0.1139013157.18
 array_push($books,'http://fs.to/get/dl/5s6pwdpwia7m644qjuozxxcyu.0.1139013157.1867975165.1448304270/%D0%9A%D0%B0%D0%BB%D0%BB%D0%B5%D0%BD.+%D0%90%D1%80%D0%B5%D0%BD%D0%B0.fb2');
 array_push($books,'Каллен. Арена.fb2');
 /*
-$bookInfo=$book->getBookInfo();
 $publishInfo=$book->getPublishInfo();
-$firstTitle=$book->getFirstTitle();
 $sections=$book->getSections();
-$coverImage=$book->getCoverImage();*/
+*/
 ?>
 <html>
   <head>

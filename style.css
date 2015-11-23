@@ -2,6 +2,7 @@ body
   {
     margin:0;
     background:#000;
+    font-family: Geneva, Arial, Helvetica, sans-serif;
   }
 emphasis
   {
@@ -45,4 +46,5 @@ h4
     margin:20px 20px;
     text-indent:20px;
     width:auto;
+    line-height:25px;
   }
