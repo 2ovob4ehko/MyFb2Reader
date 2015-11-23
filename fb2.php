@@ -3,7 +3,7 @@ class Fb2 {
   private $bookFile;
   private $bookTitle;
   private $bookAuthor;
-  private $bookGenre;
+  private $bookGenre=[];
   private $bookAnnotation;
   private $bookCoverImage;
   private $bookLang;
@@ -21,8 +21,12 @@ class Fb2 {
       $t_info=$this->bookFile->description->{'title-info'};
       $this->bookTitle=(string) $t_info->{'book-title'};
       $this->bookAuthor=$t_info->author->{'first-name'}.' '.$t_info->author->{'last-name'};
-      $this->bookGenre=(string) $t_info->genre;
-      $this->bookAnnotation=$t_info->annotation->asXML();
+      for($i=0;$i<count($t_info->genre);$i++){
+        array_push($this->bookGenre,(string) $t_info->genre[$i]);
+      }
+      foreach ($t_info->annotation->children() as $child){
+        $this->bookAnnotation.=$child->asXML();
+      }
       $this->bookYear=(string) $t_info->date;
       $this->bookLang=(string) $t_info->lang;
       $this->publishInfo=$this->bookFile->description->{'publish-info'}->asXML();
@@ -52,7 +56,7 @@ class Fb2 {
     return (object) array(
       'title'=>$this->bookTitle,
       'author'=>$this->bookAuthor,
-      'genre'=>$this->genreToString($this->bookGenre),
+      'genre'=>$this->genreToString(implode(", ",$this->bookGenre)),
       'annotation'=>$this->bookAnnotation,
       'year'=>$this->bookYear,
       'lang'=>$this->bookLang
@@ -71,11 +75,9 @@ class Fb2 {
     return $this->bookCoverImage;
   }
   private function genreToString($name){
-    $st=array(
-      'sf_cyberpunk'=>'кіберпанк фантастика',
-      'sf_social'=>'соціальна фантастика'
-    );
-    return $st[$name];
+    $code=array('sf_cyberpunk','sf_social','prose_contemporary','sf_fantasy','sf_horror','foreign_fantasy','thriller');
+    $str=array('кіберпанк фантастика','соціальна фантастика','сучасна проза','фентезі','жах-фантастика','іноземне фентезі','триллер');
+    return str_replace($code,$str,$name);;
   }
 }
 ?>
