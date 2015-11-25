@@ -1,6 +1,13 @@
 $('#file').change(function(event) {
   var tmppath=URL.createObjectURL(event.target.files[0]);
-  $.ajax({
+  $('#xml').load(tmppath,function(){
+    var title=$(this).find('book-title').html();
+    $('#title').html(title);
+    $('body').find('.page').each(function(){
+      $(this).css('display','block');
+    });
+  });
+  /*$.ajax({
     type: "GET",
     url: tmppath,
     dataType: "xml",
@@ -21,8 +28,8 @@ $('#file').change(function(event) {
       $('#title').html(title);
       $('#genre').html(genre);
       jQuery('#genre').html(function(i,val) {
-        var f=['prose_contemporary','sf_fantasy'];
-        var r=['сучасна проза','фентезі'];
+        var f=['sf_cyberpunk','sf_social','prose_contemporary','sf_fantasy','sf_horror','foreign_fantasy','thriller'];
+        var r=['кіберпанк фантастика','соціальна фантастика','сучасна проза','фентезі','жах-фантастика','іноземне фентезі','триллер'];
         $.each(f,function(i,v) {
           val = val.replace(new RegExp('\\b' + v + '\\b', 'g'),r[i]);
         });
@@ -39,8 +46,9 @@ $('#file').change(function(event) {
       $('body').find('.page').each(function(){
         $(this).css('display','block');
       });
+      $('#file').css('display','none');
       $(document).scrollTop($("p[name='1']").offset().top);
     },
     error: function(){alert('error');}
-  });
+  });*/
 });
