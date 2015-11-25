@@ -11,17 +11,13 @@ emphasis
     padding:10px;
     margin: 10px 20px;
   }
-.tumb
-  {
-    width:100px;
-  }
 .page
   {
     border:1px solid orange;
     margin:20px 0;
     background:#fff;
     box-shadow: 0px 0px 15px rgba(255,206,60,0.9);
-    width:auto;
+    display:none;
   }
 #fullcover
   {
@@ -43,8 +39,7 @@ h4
   }
 .page p
   {
-    margin:20px 20px;
+    padding:0 20px;
     text-indent:20px;
-    width:auto;
     line-height:25px;
   }
