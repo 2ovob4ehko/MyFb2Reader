@@ -6,10 +6,7 @@ body
   }
 emphasis
   {
-    display:block;
-    border:1px solid red;
-    padding:10px;
-    margin: 10px 20px;
+    font-weight:bold;
   }
 .page
   {

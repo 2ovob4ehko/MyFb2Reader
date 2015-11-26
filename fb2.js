@@ -14,6 +14,7 @@ $('#file').change(function(event) {
       });
       genre=genre.join(', ');
       var annotation=$(req.responseText).find('annotation').html();
+      var epigraph=$(req.responseText).find('epigraph').html();
       var year=$(req.responseText).find('title-info').find('date').html();
 
       $('#fullcover').attr("src",'data:image/jpeg;base64,'+cover);
@@ -27,7 +28,13 @@ $('#file').change(function(event) {
         return val;
       });
       $('#annotation').html(annotation);
+      $('#epigraph').html(epigraph);
       $('#year').html(year);
+      $(req.responseText).find('section').each(function(){
+        var page=$('<div class="page">'+$(this).html()+'</div>');
+        $('body').append(page);
+        page.find('title').replaceWith('<h2>'+page.find('title').text()+'</h2>');
+      });
       var i=0;
       $('body').find('p').each(function(){
         $(this).attr('title',i);

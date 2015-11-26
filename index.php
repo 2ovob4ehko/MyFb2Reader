@@ -7,6 +7,7 @@
   </head>
   <body>
     <input type="file" name="book" id="file"/>
+    <script src="fb2.js"></script>
     <div class="page">
       <img id="fullcover" src="">
     </div>
@@ -15,8 +16,8 @@
       <h1 id="title"></h1>
       <h2 id="genre"></h2>
       <div id="annotation"></div>
+      <div id="epigraph"></div>
       <h4 id="year"></h4>
     </div>
-    <script src="fb2.js"></script>
   </body>
 </html>
