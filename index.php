@@ -6,7 +6,6 @@
     <script src="jquery.js"></script>
   </head>
   <body>
-    <div id="xml"></div>
     <input type="file" name="book" id="file"/>
     <div class="page">
       <img id="fullcover" src="">
