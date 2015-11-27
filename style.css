@@ -7,6 +7,7 @@ body
 emphasis
   {
     font-weight:bold;
+    font-style: italic;
   }
 .page
   {
@@ -34,6 +35,11 @@ h4
   {
     text-align:center;
   }
+subtitle
+  {
+    text-align:center;
+    display:block;
+  }
 .page p
   {
     padding:0 20px;
@@ -43,3 +49,26 @@ h4
 #xml{
   display:none;
 }
+text-author, epigraph
+  {
+    text-align:right;
+    display:block;
+    padding:0 20px;
+  }
+a[type="note"]
+  {
+    vertical-align:super;
+    font-size: smaller;
+    line-height: normal;
+    background:rgba(247, 216, 4, 0.67);
+  }
+stanza
+  {
+    display:block;
+    margin:auto;
+    width:320px;
+  }
+poem v
+  {
+    display:block;
+  }
