@@ -28,16 +28,25 @@ $('#file').change(function(event) {
         return val;
       });
       $('#annotation').html(annotation);
-      /*$('#epigraph').html(epigraph);*/
       $('#year').html(year);
       $(req.responseText).children('section').each(function(){
-        var page=$('<div class="page" name="#'+$(this).attr('id')+'">'+$(this).html()+'</div>');
-        $('body').append(page);
-        page.children('title:first').replaceWith('<h2>'+page.children('title:first').text()+'</h2>');
-        page.children('section').each(function(){
-          var subtitle=$(this);
-          subtitle.children('title:first').replaceWith('<h2>'+subtitle.children('title:first').text()+'</h2>');
-        });
+        var attr = $(this).attr('id');
+        if (typeof attr==typeof undefined || attr==false){
+          var page=$('<div class="page">'+$(this).html()+'</div>');
+          $('body').append(page);
+          page.children('title:first').replaceWith('<h2>'+page.children('title:first').text()+'</h2>');
+          page.children('section').each(function(){
+            var subtitle=$(this);
+            subtitle.children('title:first').replaceWith('<h2>'+subtitle.children('title:first').text()+'</h2>');
+          });
+        }
+      });
+      $('body').append('<div class="page" id="notes"></div>');
+      $(req.responseText).children("section[id]").each(function(){
+        var note=$(this);
+        $('#notes').append(note);
+        $('#notes').css('display','block');
+        note.children('title').replaceWith('</div><h2 name="#'+note.attr('id')+'">'+note.children('title').text()+'</h2><div id="up_button">');
       });
       var i=0;
       $('body').find('p').each(function(){
@@ -45,13 +54,16 @@ $('#file').change(function(event) {
         $(this).attr('name',i);
         i++;
       });
-      $('body').find('.page').each(function(){
+      $('body').find('.page[id!="notes"]').each(function(){
         $(this).css('display','block');
       });
       $('#file').css('display','none');
       $(document).scrollTop($("p[name='0']").offset().top);
       $(document).on('click',"a[type='note']",function(){
-        $(document).scrollTop($(".page[name='"+$(this).attr('l:href')+"']").offset().top);
+        $(document).scrollTop($("h2[name='"+$(this).attr('l:href')+"']").offset().top);
+      });
+      $(document).on('click',"#up_button",function(){
+        $(document).scrollTop($("a[l\\:href='#"+$(this).parent().attr('id')+"']").offset().top);
       });
     };
     req.send();
