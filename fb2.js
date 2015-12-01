@@ -53,6 +53,12 @@ $('#file').change(function(event) {
         $(this).attr('name',i);
         i++;
       });
+      $('body').on('click','p',function(){
+        $.ajax({
+          url:"save.php?title="+title+"&author="+author+"&line="+$(this).attr('name'),
+          cache:false
+        });
+      });
       $('body').find('.page[id!="notes"]').each(function(){
         $(this).css('display','block');
       });
