@@ -14,7 +14,6 @@ $('#file').change(function(event) {
       });
       genre=genre.join(', ');
       var annotation=$(req.responseText).find('annotation').html();
-      /*var epigraph=$(req.responseText).find('epigraph').html();*/
       var year=$(req.responseText).find('title-info').find('date').html();
 
       $('#fullcover').attr("src",'data:image/jpeg;base64,'+cover);
