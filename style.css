@@ -86,3 +86,19 @@ poem v
     right:5px;
     cursor:pointer;
   }
+form
+  {
+    margin:auto;
+    width:300px;
+  }
+form table
+  {
+    text-align:center;
+    margin:auto;
+    width:250px;
+    color:#fff;
+  }
+form table a
+  {
+    color:#fff;
+  }
