@@ -55,15 +55,25 @@ $('#file').change(function(event) {
       });
       $('body').on('click','p',function(){
         $.ajax({
-          url:"save.php?title="+title+"&author="+author+"&line="+$(this).attr('name'),
+          url:"?action=save&title="+title+"&author="+author+"&line="+$(this).attr('name'),
           cache:false
         });
+      });
+      $.ajax({
+        url:"?action=line&title="+title+"&author="+author,
+        cache:false,
+        success:function(result){
+          var line=parseInt(result);
+          if(line!=0){
+            $(document).scrollTop($("p[name='"+line+"']").offset().top);
+            console.log(line);
+          }
+        }
       });
       $('body').find('.page[id!="notes"]').each(function(){
         $(this).css('display','block');
       });
       $('#file').css('display','none');
-      $(document).scrollTop($("p[name='0']").offset().top);
       $(document).on('click',"a[type='note']",function(){
         $(document).scrollTop($("h2[name='"+$(this).attr('l:href')+"']").offset().top);
       });
