@@ -66,14 +66,13 @@ $('#file').change(function(event) {
           var line=parseInt(result);
           if(line!=0){
             $(document).scrollTop($("p[name='"+line+"']").offset().top);
-            console.log(line);
           }
         }
       });
       $('body').find('.page[id!="notes"]').each(function(){
         $(this).css('display','block');
       });
-      $('#file').css('display','none');
+      $('#fileUpload').css('display','none');
       $(document).on('click',"a[type='note']",function(){
         $(document).scrollTop($("h2[name='"+$(this).attr('l:href')+"']").offset().top);
       });
@@ -82,9 +81,15 @@ $('#file').change(function(event) {
       });
     };
     req.send();
+    xhr.onreadystatechange=function(){
+      if(xhr.readyState==4&&xhr.status==200){
+        $('#loading').css('display','none');
+      }
+    }
   }
 });
 function createCORSRequest(method,url){
+  $('#loading').css('display','block');
   var xhr = new XMLHttpRequest();
   if("withCredentials" in xhr){
     xhr.open(method,url,true);
