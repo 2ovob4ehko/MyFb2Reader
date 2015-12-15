@@ -54,9 +54,19 @@ $('#file').change(function(event) {
         i++;
       });
       $('body').on('click','p',function(){
+        var p=$(this);
         $.ajax({
-          url:"?action=save&title="+title+"&author="+author+"&line="+$(this).attr('name'),
-          cache:false
+          url:"?action=save&title="+title+"&author="+author+"&line="+p.attr('name'),
+          cache:false,
+          success:function(){
+            p.animate({
+              backgroundColor: "#ff0000"
+            },2000,function(){
+              p.animate({
+                backgroundColor:"#ffffff"
+              },"slow");
+            });
+          }
         });
       });
       $.ajax({
@@ -81,8 +91,8 @@ $('#file').change(function(event) {
       });
     };
     req.send();
-    xhr.onreadystatechange=function(){
-      if(xhr.readyState==4&&xhr.status==200){
+    req.onreadystatechange=function(){
+      if(req.readyState==4&&req.status==200){
         $('#loading').css('display','none');
       }
     }

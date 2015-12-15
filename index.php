@@ -16,6 +16,7 @@ function base_url(){
     <link rel="stylesheet" href="style.css">
     <script src="jquery.js"></script>
     <script src="spin.min.js"></script>
+    <script src="jquery.color.js"></script>
   </head>
   <body>
 <?
