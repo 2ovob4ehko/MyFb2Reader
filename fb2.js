@@ -60,8 +60,8 @@ $('#file').change(function(event) {
           cache:false,
           success:function(){
             p.animate({
-              backgroundColor: "#ff0000"
-            },2000,function(){
+              backgroundColor: "rgba(190, 135, 58, 0.5)"
+            },"slow",function(){
               p.animate({
                 backgroundColor:"#ffffff"
               },"slow");
