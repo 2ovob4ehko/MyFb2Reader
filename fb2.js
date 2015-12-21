@@ -89,6 +89,12 @@ $('#file').change(function(event) {
       $(document).on('click',"#up_button",function(){
         $(document).scrollTop($("a[l\\:href='#"+$(this).parent().attr('id')+"']").offset().top);
       });
+      $('#menu').on('click',function(){
+        $('#contents').css('width','50%');
+      });
+      $('.page').on('click',function(){
+        $('#contents').css('width','0px');
+      });
     };
     req.send();
     req.onreadystatechange=function(){

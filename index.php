@@ -68,6 +68,8 @@ if(isset($_GET['action'])){
         <input type="file" name="book" id="file"/>
       </div>
       <script src="fb2.js"></script>
+      <div id="menu"></div>
+      <div id="contents"><h2>Зміст</h2></div>
       <div class="page">
         <img id="fullcover" src="">
       </div>
